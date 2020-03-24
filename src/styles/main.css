@@ -1,0 +1,13 @@
+html {
+    background-image: linear-gradient(#369, #fff);
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+}
+

@@ -1,0 +1,19 @@
+/* Styling of table  */
+
+table {
+    width: 60%;
+    border-collapse: collapse;
+    margin: 1em;
+}
+
+th {
+    height: 40px;
+}
+
+table, td, th {
+    border: 1px solid black;
+}
+
+.table_header {
+    background: green;
+}
