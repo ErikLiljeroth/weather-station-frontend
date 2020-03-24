@@ -1,0 +1,8 @@
+
+/* Container for temperature and humidity plots  */
+.plots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+

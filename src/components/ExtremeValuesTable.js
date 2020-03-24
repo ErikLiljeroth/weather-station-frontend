@@ -13,21 +13,21 @@ const ExtremeValuesTable = ({ data }) => {
         <table >
             <thead >
                 <tr className="table_header">
-                    <th> Storhet [enhet] </th>
-                    <th> Min </th>
-                    <th> Max </th>
+                    <th id={'borderboth'}> Storhet [enhet] </th>
+                    <th id={'borderboth'}> Min </th>
+                    <th id={'borderbottom'}> Max </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td> Temperatur [&deg;C] </td>
-                    <td>  {minTemp}         </td>
-                    <td>  {maxTemp}          </td>
+                    <td id={'borderboth'}> Temperatur [&deg;C] </td>
+                    <td id={'borderboth'}>  {minTemp}          </td>
+                    <td id={'borderbottom'}  >  {maxTemp}                           </td>
                 </tr>
                 <tr>
-                    <td> Luftfuktighet [%]</td>
-                    <td> {minHumi}           </td>
-                    <td> {maxHumi}           </td>
+                    <td id={'borderright'}> Luftfuktighet [%]   </td>
+                    <td id={'borderright'}> {minHumi}           </td>
+                    <td >  {maxHumi}                             </td>
                 </tr>
             </tbody>
         </table>

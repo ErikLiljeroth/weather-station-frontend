@@ -1,7 +1,7 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-const Plots = ({ data }) => {
+const Plots = ({ data, className }) => {
 
     const dtgs = data.map(d => d.dtg)
     const temperatures = data.map(d => Number(d.temperature))
@@ -16,45 +16,57 @@ const Plots = ({ data }) => {
     const minHumi = Math.min(...humidities)
 
     const temperatureLayout = {
+        autosize: false,
+        width: 500,
+        height: 500,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
             text: 'Temperatur [&deg;C]',
             font: {
                 family: 'Courier New, monospace',
-                size: 18,
+                size: 20,
                 color: '#b02'
             },
             xref: 'paper',
             x: 0.05
         },
-        yaxis: { range: [minTemp - 7, maxTemp + 7] }
+        yaxis: { range: [minTemp - 5, maxTemp + 5] }
     }
 
     const humidityLayout = {
+        autosize: false,
+        width: 500,
+        height: 500,
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
             text: 'Luftfuktighet [%]',
             font: {
                 family: 'Courier New, monospace',
-                size: 18,
+                size: 20,
                 color: '#b02'
             },
             xref: 'paper',
             x: 0.05
         },
-        yaxis: { range: [minHumi - 20, maxHumi + 20] }
+        yaxis: { range: [minHumi - 15, maxHumi + 15] }
     }
 
+    const config = { useresizehandler: true }
+
     return (
-        <div>
+        <div className={className}>
             <Plot
                 data={temp_data}
                 layout={temperatureLayout}
-
+                config={config}
             />
 
             <Plot
                 data={hum_data}
                 layout={humidityLayout}
-
+                config={config}
             />
         </div>
 

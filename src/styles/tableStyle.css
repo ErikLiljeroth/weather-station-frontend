@@ -6,14 +6,23 @@ table {
     margin: 1em;
 }
 
-th {
-    height: 40px;
+#borderbottom {
+    border-bottom: 2px solid gray;
 }
 
-table, td, th {
-    border: 1px solid black;
+#borderright {
+    border-right: 2px solid gray;
+}
+
+#borderboth {
+    border-bottom: 2px solid gray;
+    border-right: 2px solid gray;
+}
+
+th, td {
+    padding: 1em;
 }
 
 .table_header {
-    background: green;
+    background: rgb(144, 173, 201);
 }
