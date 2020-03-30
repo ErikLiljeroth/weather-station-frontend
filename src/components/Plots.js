@@ -26,7 +26,7 @@ const Plots = ({ data, className }) => {
             font: {
                 family: 'Courier New, monospace',
                 size: 20,
-                color: '#b02'
+                color: '#000'
             },
             xref: 'paper',
             x: 0.05
@@ -45,7 +45,7 @@ const Plots = ({ data, className }) => {
             font: {
                 family: 'Courier New, monospace',
                 size: 20,
-                color: '#b02'
+                color: '#000'
             },
             xref: 'paper',
             x: 0.05
