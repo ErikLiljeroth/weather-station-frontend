@@ -48,6 +48,8 @@ const App = () => {
 
             <h1>Växthuset</h1>
 
+            <h3>Measurements for 2020 started on 2020-03-29</h3>
+
             <h2>Temperatur och luftfuktighet</h2>
 
             <div className='plotbuttons'>
