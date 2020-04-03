@@ -32,7 +32,7 @@ const App = () => {
         dataService
             .getData()
             .then(initialData => {
-                setAllData(initialData)
+                setAllData(initialData.reverse()) // the data is for descending time, needs to be mirrored
                 setDisplayData(initialData)
             })
     }, [])
