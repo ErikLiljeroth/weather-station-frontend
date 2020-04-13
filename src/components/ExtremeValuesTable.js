@@ -2,8 +2,10 @@ import React from 'react'
 
 const ExtremeValuesTable = ({ data }) => {
 
-    const temperatures = data.map(d => Number(d.temperature))
-    const humidities = data.map(d => Number(d.humidity))
+    let temperatures = data.map(d => Number(d.temperature))
+    temperatures = temperatures.slice(-48*7)
+    let humidities = data.map(d => Number(d.humidity))
+    humidities = humidities.slice(-48*7)
     const maxTemp = Math.max(...temperatures)
     const minTemp = Math.min(...temperatures)
     const maxHumi = Math.max(...humidities)
