@@ -1,10 +1,11 @@
 .footer, .header {
     background: lightgray;
     width: 100%;
-    height: 60px;
+    height: 6em;
 }
 
 .footer {
     display: flex;
     justify-content: center;
+    font-size: 14;
 }

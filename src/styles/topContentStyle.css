@@ -1,0 +1,44 @@
+.topContent {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+:nth-child(2) {
+    align-self: flex-start;
+    margin-top: 1em;
+}
+
+.infoBox, .dataBox {
+    width: 25%;
+    margin: 1em;
+    margin-top: 3em;
+    border: 2px solid rgb(144, 173, 201);
+    display: flex;
+    flex-direction: column;
+}
+
+.infoBoxHeader, .dataBoxHeader {
+    margin-top: 0;
+    top:0;
+    text-align: center;
+    background: rgb(144, 173, 201);
+}
+
+.infoBoxContent, .dataBoxContent {
+    text-align: center;
+    margin:0.5em;
+    margin-top: 0;
+    /*
+    border-bottom: 2px solid rgb(144, 173, 201);
+    border-right: 2px solid rgb(144, 173, 201);
+    border-left: 2px solid rgb(144, 173, 201);
+    */
+}
+
+.mainTitle {
+    width: 20%;
+    margin: 1em;
+}

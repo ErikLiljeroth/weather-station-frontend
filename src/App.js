@@ -5,7 +5,7 @@ import Header from './components/Header.js'
 import Footer from './components/Footer.js'
 import Plots from './components/Plots.js'
 import ExtremeValuesTable from './components/ExtremeValuesTable'
-
+import TopContent from './components/TopContent'
 
 // Fonts
 import './fonts/GloriaHallelujah-Regular.ttf'
@@ -16,9 +16,12 @@ import './styles/tableStyle.css'
 import './styles/footerHeaderStyle.css'
 import './styles/buttonStyle.css'
 import './styles/plotStyle.css'
+import './styles/topContentStyle.css'
 
-// Service
+// Services
 import dataService from './services/data.js'
+import infoService from './services/info.js'
+
 
 const App = () => {
 
@@ -26,8 +29,11 @@ const App = () => {
     const [allData, setAllData] = useState([])
     // displayData contains the data to be displayed in plots, initialized as allData
     const [displayData, setDisplayData] = useState([])
+    // info contains general information about the measurements on the website
+    const beforeLoadInfo = {total_measurements: '-', first_day_of_measurements: '-', last_day_of_measurements: '-'}
+    const [info, setInfo] = useState([beforeLoadInfo])
 
-    // Initialize states
+    // Initialize data states
     useEffect(() => {
         dataService
             .getData()
@@ -35,33 +41,48 @@ const App = () => {
                 setAllData(initialData)
                 setDisplayData(initialData)
             })
+        infoService
+            .getInfo()
+            .then(retrievedInfo => {
+                setInfo(retrievedInfo)
+            })
     }, [])
+
+    // For bug-checking the info-boxes
+    /* 
+    const fetchInfo = () => {
+        const info = {}
+        info.total_measurements = 5000
+        info.first_day_of_measurements = '2020-03-31'
+        info.last_day_of_measurements = '2020-04-05'
+        return info
+    }
+    */
 
     const handlePlotButton = (nbrDays) => {
         const nbrtoShow = -nbrDays * 48 // 48 measurements per day
         setDisplayData(allData.slice(nbrtoShow)) // NOTE asynch function
     }
 
+
     return (
         <div className='wrapper'>
             <Header />
 
-            <h1>Växthuset</h1>
+            <TopContent total_measurements={info[0].total_measurements} first_day={info[0].first_day_of_measurements} last_day={info[0].last_day_of_measurements} />
 
-            <h3>Measurements for 2020 started on 2020-03-29</h3>
-
-            <h2>Temperatur och luftfuktighet</h2>
+            <h2>Temperature and Relative Humidity</h2>
 
             <div className='plotbuttons'>
-                <button onClick={() => handlePlotButton(1)}  >1 dygn</button>
-                <button onClick={() => handlePlotButton(2)}  > 2 dygn</button >
-                <button onClick={() => handlePlotButton(7)}  >7 dygn</button>
-                <button onClick={() => handlePlotButton(30)} >30 dygn</button>
+                <button onClick={() => handlePlotButton(1)}  >1 day</button>
+                <button onClick={() => handlePlotButton(2)}  > 2 days</button >
+                <button onClick={() => handlePlotButton(7)}  >7 days</button>
+                <button onClick={() => handlePlotButton(30)} >30 days</button>
             </div>
 
             <Plots data={displayData} className={'plots'} />
 
-            <h2>Extremvärden senaste 7 dagar</h2>
+            <h2>Extremevalues past 7 days</h2>
 
             <ExtremeValuesTable data={allData} />
 

@@ -22,7 +22,7 @@ const Plots = ({ data, className }) => {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
-            text: 'Temperatur [&deg;C]',
+            text: 'Temperature [&deg;C]',
             font: {
                 family: 'Courier New, monospace',
                 size: 20,
@@ -41,7 +41,7 @@ const Plots = ({ data, className }) => {
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         title: {
-            text: 'Luftfuktighet [%]',
+            text: 'Relative Humidity [%]',
             font: {
                 family: 'Courier New, monospace',
                 size: 20,

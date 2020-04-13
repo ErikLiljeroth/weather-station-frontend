@@ -1,4 +1,11 @@
 {
+    "info": [
+        {
+            "total_measurements": "5000", 
+            "first_day_of_measurements": "2020-03-31", 
+            "last_day_of_measurements": "2020-04-05"
+        }
+    ],
     "data": [
         {
             "dtg": "2020-03-24 13:30:02",

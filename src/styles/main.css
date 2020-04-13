@@ -1,7 +1,9 @@
-
+/* Min-width makes sure the layout looks ok on mobile. There is currently a compability issue
+with Flexbox and Plotly, so Plotly cannot resize in a responsive way. 
+Min-width kind of fixes this. */
 html {
     height: 100%;
-    min-width: 600px;
+    min-width: 950px;
     display:flex;
     justify-content: center;
     align-items: stretch;
@@ -9,8 +11,11 @@ html {
 
 .wrapper {
     height: 100%;
-    width: 100%;
-    margin-top: -10px;
+    width: 75%;
+    margin-top: -20px;
+    margin-bottom: -20px;
+    margin-left: auto;
+    margin-right: auto;
     background-image: linear-gradient(#369, #fff);
     background-repeat: no-repeat;
     display: flex;
@@ -30,17 +35,23 @@ font-family: Gloria Hallelujah, free open license, cursive; */
 h1 {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 32px;
 }
 
 h2 {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
-    font-size: 21px;
+    font-size: 22px;
 }
 
 h3 {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
     font-size: 16px;
+}
+
+p, ul {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: bold;
+    font-size: 15px;
 }
