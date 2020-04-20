@@ -3,8 +3,9 @@ import React from 'react'
 const ExtremeValuesTable = ({ data }) => {
 
     let temperatures = data.map(d => Number(d.temperature))
-    temperatures = temperatures.slice(-48*7)
     let humidities = data.map(d => Number(d.humidity))
+    // take just values over last 7 days
+    temperatures = temperatures.slice(-48*7)
     humidities = humidities.slice(-48*7)
     const maxTemp = Math.max(...temperatures)
     const minTemp = Math.min(...temperatures)
