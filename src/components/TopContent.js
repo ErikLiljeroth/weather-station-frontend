@@ -14,7 +14,7 @@ const TopContent = ({ total_measurements, first_day, last_day }) => {
                 </p>
             </div>
 
-            <h1 className='mainTtile'>Erik's Greenhouse</h1>
+            {/*<h1 className='mainTtile'>Erik's Greenhouse</h1>*/}
 
             <div className='dataBox'>
                 <h2 className='dataBoxHeader'>

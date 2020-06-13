@@ -21,6 +21,7 @@ import './styles/topContentStyle.css'
 // Services
 import dataService from './services/data.js'
 import infoService from './services/info.js'
+import tempForecastService from './services/tempforecast.js'
 
 
 const App = () => {
@@ -32,6 +33,9 @@ const App = () => {
     // info contains general information about the measurements on the website
     const beforeLoadInfo = {total_measurements: '-', first_day_of_measurements: '-', last_day_of_measurements: '-'}
     const [info, setInfo] = useState([beforeLoadInfo])
+
+    // tempforecast contains temperature forecast
+    const [tempForecast, setTempForecast] = useState([])
 
     // Initialize data states
     useEffect(() => {
@@ -45,6 +49,11 @@ const App = () => {
             .getInfo()
             .then(retrievedInfo => {
                 setInfo(retrievedInfo)
+            })
+        tempForecastService
+            .getForecast()
+            .then(retrievedForecast => {
+                setTempForecast(retrievedForecast)
             })
     }, [])
 
@@ -80,7 +89,7 @@ const App = () => {
                 <button onClick={() => handlePlotButton(30)} >30 days</button>
             </div>
 
-            <Plots data={displayData} className={'plots'} />
+            <Plots data={displayData} tempForecast={tempForecast} className={'plots'} />
 
             <h2>Extremevalues past 7 days</h2>
 

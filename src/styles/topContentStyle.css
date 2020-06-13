@@ -1,5 +1,6 @@
 .topContent {
     width: 100%;
+    min-width: 75%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,8 +13,8 @@
 }
 
 .infoBox, .dataBox {
-    width: 25%;
-    margin: 1em;
+    width: 35%;
+    margin: 4em;
     margin-top: 3em;
     border: 2px solid rgb(144, 173, 201);
     display: flex;
@@ -32,11 +33,6 @@
     text-align: center;
     margin: 0.5em;
     margin-top: 0;
-}
-
-.mainTitle {
-    width: 20%;
-    margin: 1em;
 }
 
 .dataBoxContent {

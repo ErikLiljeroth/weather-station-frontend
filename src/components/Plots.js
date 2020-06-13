@@ -1,14 +1,21 @@
 import React from 'react'
 import Plot from 'react-plotly.js'
 
-const Plots = ({ data, className }) => {
+const Plots = ({ data, tempForecast, className }) => {
 
     const dtgs = data.map(d => d.dtg)
     const temperatures = data.map(d => Number(d.temperature))
     const humidities = data.map(d => Number(d.humidity))
 
-    const temp_data = [{ x: dtgs, y: temperatures, name: 'temperature', type: 'scatter' }]
-    const hum_data = [{ x: dtgs, y: humidities, name: 'humidity', type: 'scatter' }]
+    const forecastDtgs = tempForecast.map(t => t.dtg)
+    const tempForecastValues = tempForecast.map(t => Number(t[Object.keys(t)[1]]))
+
+
+    const temp_data = [
+        {x: dtgs, y: temperatures, name: 'temperature', type: 'scatter', marker:{color:'blue'} }, 
+        {x:forecastDtgs, y:tempForecastValues, name:'sarimax forecast', type:'scatter', marker:{color:'purple'}}
+    ]
+    const hum_data = [{ x: dtgs, y: humidities, name: 'humidity', type: 'scatter', marker:{color:'blue'} }]
 
     const maxTemp = Math.max(...temperatures)
     const minTemp = Math.min(...temperatures)
@@ -31,7 +38,8 @@ const Plots = ({ data, className }) => {
             xref: 'paper',
             x: 0.05
         },
-        yaxis: { range: [minTemp - 5, maxTemp + 5] }
+        yaxis: { range: [minTemp - 20, maxTemp + 20] }, 
+        legend: {x: 0.6, y:1.15}
     }
 
     const humidityLayout = {
@@ -50,7 +58,9 @@ const Plots = ({ data, className }) => {
             xref: 'paper',
             x: 0.05
         },
-        yaxis: { range: [minHumi - 15, maxHumi + 15] }
+        yaxis: { range: [minHumi - 15, maxHumi + 15] }, 
+        showlegend: true, 
+        legend: {x: 0.6, y:1.15}
     }
     
     const config = { useresizehandler: true }

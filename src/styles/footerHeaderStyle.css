@@ -4,6 +4,11 @@
     height: 6em;
 }
 
+.mainTitle {
+    margin-left: 2em;
+    width:100%;
+}
+
 .footer {
     display: flex;
     justify-content: center;
