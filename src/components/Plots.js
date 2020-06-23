@@ -1,5 +1,8 @@
 import React from 'react'
-import Plot from 'react-plotly.js'
+
+import createPlotlyComponent from 'react-plotly.js/factory';
+var Plotly = require('../custom-plotly.js');
+const Plot = createPlotlyComponent(Plotly);
 
 const Plots = ({ data, tempForecast, className }) => {
 
@@ -7,9 +10,15 @@ const Plots = ({ data, tempForecast, className }) => {
     const temperatures = data.map(d => Number(d.temperature))
     const humidities = data.map(d => Number(d.humidity))
 
-    const forecastDtgs = tempForecast.map(t => t.dtg)
-    const tempForecastValues = tempForecast.map(t => Number(t[Object.keys(t)[1]]))
+    let filteredForecast = [...tempForecast]
 
+    // Avoid forecast- and sensor values overlap by removing overlapping forecast values
+    if (tempForecast[0] && dtgs[0]) {
+        filteredForecast = tempForecast.filter(t => Date.parse(t.dtg) >= Date.parse(dtgs[data.length - 1]))
+    }
+
+    const forecastDtgs = filteredForecast.map(t => t.dtg)
+    const tempForecastValues = filteredForecast.map(t => Number(t[Object.keys(t)[1]]))
 
     const temp_data = [
         {x: dtgs, y: temperatures, name: 'temperature', type: 'scatter', marker:{color:'blue'} }, 
@@ -38,7 +47,7 @@ const Plots = ({ data, tempForecast, className }) => {
             xref: 'paper',
             x: 0.05
         },
-        yaxis: { range: [minTemp - 20, maxTemp + 20] }, 
+        yaxis: { range: [minTemp - 15, maxTemp + 15] }, 
         legend: {x: 0.6, y:1.15}
     }
 
