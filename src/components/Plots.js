@@ -14,7 +14,7 @@ const Plots = ({ data, tempForecast, className }) => {
 
     // Avoid forecast- and sensor values overlap by removing overlapping forecast values
     if (tempForecast[0] && dtgs[0]) {
-        filteredForecast = tempForecast.filter(t => Date.parse(t.dtg) >= Date.parse(dtgs[data.length - 1]))
+        filteredForecast = tempForecast.filter(t => Date.parse(t.dtg) > Date.parse(dtgs[data.length - 1]))
     }
 
     const forecastDtgs = filteredForecast.map(t => t.dtg)
