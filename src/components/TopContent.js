@@ -10,7 +10,8 @@ const TopContent = ({ total_measurements, first_day, last_day }) => {
                 </h2>
                 <p className='infoBoxContent'>
                     The greenhouse is placed on Erik's balcony on the fourth floor.
-                    This website runs on a Raspberry Pi inside the greenhouse.
+                    This website runs on a Raspberry Pi inside the greenhouse. <br/><br/>
+                    Here you can find live measurements from the greenhouse and forecasting using mathematical models.
                 </p>
             </div>
 

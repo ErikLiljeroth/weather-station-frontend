@@ -6,3 +6,17 @@
     justify-content: center;
 }
 
+.select-horizon {
+    margin-bottom: 0;
+    margin-top: 1em;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown-text {
+    font-weight: bold;
+    font-style: normal;
+    
+}

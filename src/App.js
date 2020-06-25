@@ -6,6 +6,7 @@ import Footer from './components/Footer.js'
 import Plots from './components/Plots.js'
 import ExtremeValuesTable from './components/ExtremeValuesTable'
 import TopContent from './components/TopContent'
+import Dropdown from './components/Dropdown.js'
 
 // Fonts
 import './fonts/GloriaHallelujah-Regular.ttf'
@@ -34,6 +35,8 @@ const App = () => {
     const beforeLoadInfo = {total_measurements: '-', first_day_of_measurements: '-', last_day_of_measurements: '-'}
     const [info, setInfo] = useState([beforeLoadInfo])
 
+    const [dropdownChoice, setDropdownChoice] = useState(1)
+
     // tempforecast contains temperature forecast
     const [tempForecast, setTempForecast] = useState([])
 
@@ -43,7 +46,7 @@ const App = () => {
             .getData()
             .then(initialData => {
                 setAllData(initialData)
-                setDisplayData(initialData)
+                setDisplayData(initialData.slice(-48))
             })
         infoService
             .getInfo()
@@ -57,21 +60,19 @@ const App = () => {
             })
     }, [])
 
-    // For bug-checking the info-boxes
-    /* 
-    const fetchInfo = () => {
-        const info = {}
-        info.total_measurements = 5000
-        info.first_day_of_measurements = '2020-03-31'
-        info.last_day_of_measurements = '2020-04-05'
-        return info
+    const handleDropdown = (nbrDays) => {
+        setDisplayData(allData.slice(-nbrDays * 48)) // 48 measurements per day
+        setDropdownChoice(nbrDays)
     }
-    */
 
-    const handlePlotButton = (nbrDays) => {
-        const nbrtoShow = -nbrDays * 48 // 48 measurements per day
-        setDisplayData(allData.slice(nbrtoShow)) // NOTE asynch function
-    }
+    /*
+    <div className='plotbuttons'>
+                <button onClick={() => handleDropdown(1)}  >1 day</button>
+                <button onClick={() => handleDropdown(2)}  > 2 days</button >
+                <button onClick={() => handleDropdown(7)}  >7 days</button>
+                <button onClick={() => handleDropdown(30)} >30 days</button>
+            </div>
+    */
 
 
     return (
@@ -82,11 +83,14 @@ const App = () => {
 
             <h2>Temperature and Relative Humidity</h2>
 
-            <div className='plotbuttons'>
-                <button onClick={() => handlePlotButton(1)}  >1 day</button>
-                <button onClick={() => handlePlotButton(2)}  > 2 days</button >
-                <button onClick={() => handlePlotButton(7)}  >7 days</button>
-                <button onClick={() => handlePlotButton(30)} >30 days</button>
+            <div className='select-horizon'>
+                <em className='dropdown-text'>Select time span:</em>
+                <Dropdown
+                value={dropdownChoice}
+                options={['1 day', '2 days', '7 days', '30 days']}
+                options_numbers={[1, 2, 7, 30]}
+                onChange={handleDropdown}
+                />
             </div>
 
             <Plots data={displayData} tempForecast={tempForecast} className={'plots'} />

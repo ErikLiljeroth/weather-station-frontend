@@ -41,17 +41,23 @@ h1 {
 h2 {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 24px;
 }
 
 h3 {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
 }
 
-p, ul {
+p {
     font-family: 'Gloria Hallelujah', cursive;
     font-weight: bold;
     font-size: 15px;
+}
+
+em {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-weight: bold;
+    font-size: 18px;
 }

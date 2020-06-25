@@ -22,7 +22,7 @@ const Plots = ({ data, tempForecast, className }) => {
 
     const temp_data = [
         {x: dtgs, y: temperatures, name: 'temperature', type: 'scatter', marker:{color:'blue'} }, 
-        {x:forecastDtgs, y:tempForecastValues, name:'sarimax forecast', type:'scatter', marker:{color:'purple'}}
+        {x:forecastDtgs, y:tempForecastValues, name:'sarima forecast', type:'scatter', marker:{color:'purple'}}
     ]
     const hum_data = [{ x: dtgs, y: humidities, name: 'humidity', type: 'scatter', marker:{color:'blue'} }]
 
