@@ -1,8 +1,8 @@
 {
     "info": [
         {
-            "total_measurements": "5000", 
-            "first_day_of_measurements": "2020-03-31", 
+            "total_measurements": "5000",
+            "first_day_of_measurements": "2020-03-31",
             "last_day_of_measurements": "2020-04-05"
         }
     ],

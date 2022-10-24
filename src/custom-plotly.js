@@ -1,6 +1,6 @@
 const Plotly = require('plotly.js/lib/core')
 
-// Load in the trace types for pie, and choropleth
+// Load in the trace type for scatter
 Plotly.register([
     require('plotly.js/lib/scatter')
 ])
